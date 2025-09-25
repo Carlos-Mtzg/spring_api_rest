@@ -10,7 +10,6 @@ This project is a simple RESTful API built with Spring Boot. It provides basic C
 
 - Java 17+
 - Maven 3.8+
-- (Optional) Docker (for database or deployment)
 
 ---
 
