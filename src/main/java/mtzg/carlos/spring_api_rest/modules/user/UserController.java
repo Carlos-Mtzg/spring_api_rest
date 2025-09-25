@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import mtzg.carlos.spring_api_rest.modules.user.dto.UserRequestDto;
+import mtzg.carlos.spring_api_rest.modules.user.dto.UserRegisterDto;
+import mtzg.carlos.spring_api_rest.modules.user.dto.UserUpdateDto;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -33,12 +35,13 @@ public class UserController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Object> createUser(@RequestBody UserRequestDto request) {
+    public ResponseEntity<Object> createUser(@RequestBody @Valid UserRegisterDto request) {
         return userService.createUser(request);
     }
 
     @PutMapping("/{uuid}")
-    public ResponseEntity<Object> updateUser(@PathVariable("uuid") UUID uuid, @RequestBody UserRequestDto request) {
+    public ResponseEntity<Object> updateUser(@PathVariable("uuid") UUID uuid,
+            @RequestBody @Valid UserUpdateDto request) {
         return userService.updateUser(uuid, request);
     }
 
