@@ -11,8 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
-import mtzg.carlos.spring_api_rest.modules.user.dto.UserRequestDto;
+import mtzg.carlos.spring_api_rest.modules.user.dto.UserRegisterDto;
 import mtzg.carlos.spring_api_rest.modules.user.dto.UserResponseDto;
+import mtzg.carlos.spring_api_rest.modules.user.dto.UserUpdateDto;
 import mtzg.carlos.spring_api_rest.utils.Utilities;
 
 @Service
@@ -55,7 +56,7 @@ public class UserService {
     }
 
     @Transactional
-    public ResponseEntity<Object> createUser(UserRequestDto request) {
+    public ResponseEntity<Object> createUser(UserRegisterDto request) {
         try {
             Optional<UserModel> validMail = userRepository.findByEmail(request.getEmail());
             if (validMail.isPresent()) {
@@ -84,7 +85,7 @@ public class UserService {
     }
 
     @Transactional
-    public ResponseEntity<Object> updateUser(UUID uuid, UserRequestDto dto) {
+    public ResponseEntity<Object> updateUser(UUID uuid, UserUpdateDto dto) {
         try {
             return userRepository.findByUuid(uuid)
                     .map(existingUser -> {

@@ -1,5 +1,6 @@
 package mtzg.carlos.spring_api_rest.modules.user.dto;
 
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,10 +10,16 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRequestDto {
+public class UserUpdateDto {
 
+    @Pattern(regexp = "^[^<>]*$", message = "No se permiten los caracteres < o >")
     private String name;
+
+    @Pattern(regexp = "^[^<>]*$", message = "No se permiten los caracteres < o >")
     private String email;
+
+    @Pattern(regexp = "^[^<>]*$", message = "No se permiten los caracteres < o >")
+    @Pattern(regexp = "^[0-9]{10}$", message = "El teléfono debe contener exactamente 10 dígitos numéricos")
     private String phone;
 
     public void setName(String name) {
