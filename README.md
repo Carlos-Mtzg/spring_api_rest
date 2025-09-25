@@ -23,13 +23,17 @@ You should set up your database connection and other environment-specific proper
 
 ```properties
 # Database configuration
-spring.datasource.url=jdbc:mysql://localhost:3306/your_db
-spring.datasource.username=your_user
-spring.datasource.password=your_password
-spring.jpa.hibernate.ddl-auto=update
+db.host=localhost
+db.port=3306
+db.name=spring_api_rest
+db.username=your_username
+db.password=your_password
 
-# Server port
-server.port=8080
+
+# JPA
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.show-sql=true
 ```
 
 ---
